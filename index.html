@@ -1,734 +1,944 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Cofounder — Join the Waitlist</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Cofounder — Join the Waitlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :root {
-    --orange: #E8622A;
-    --orange-bright: #FF7A3D;
-    --cyan: #00E5FF;
-    --cyan-dim: #00B8CC;
-    --bg: #06060A;
-    --text: #F0EDE8;
-    --muted: rgba(240,237,232,0.45);
-    --border-cyan: rgba(0,229,255,0.2);
-    --border-orange: rgba(232,98,42,0.3);
-  }
+    :root {
+      --orange: #E8622A;
+      --orange-bright: #FF7A3D;
+      --cyan: #00E5FF;
+      --cyan-dim: #00B8CC;
+      --bg: #06060A;
+      --text: #F0EDE8;
+      --muted: rgba(240, 237, 232, 0.45);
+      --border-cyan: rgba(0, 229, 255, 0.2);
+      --border-orange: rgba(232, 98, 42, 0.3);
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Exo 2', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Exo 2', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  /* Grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-    animation: gridScroll 25s linear infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-  @keyframes gridScroll {
-    from { transform: translateY(0); }
-    to   { transform: translateY(56px); }
-  }
+    /* Grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+      animation: gridScroll 25s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  /* Ambient glows */
-  .glow-orange {
-    position: fixed;
-    width: 600px; height: 600px;
-    top: -150px; left: -150px;
-    background: radial-gradient(circle, rgba(232,98,42,0.18) 0%, transparent 70%);
-    pointer-events: none; z-index: 0;
-    animation: pulse1 6s ease-in-out infinite alternate;
-  }
-  .glow-cyan {
-    position: fixed;
-    width: 500px; height: 500px;
-    bottom: -100px; right: -100px;
-    background: radial-gradient(circle, rgba(0,229,255,0.14) 0%, transparent 70%);
-    pointer-events: none; z-index: 0;
-    animation: pulse2 8s ease-in-out infinite alternate;
-  }
-  @keyframes pulse1 { from { opacity: 0.7; } to { opacity: 1; } }
-  @keyframes pulse2 { from { opacity: 0.5; } to { opacity: 0.9; } }
+    @keyframes gridScroll {
+      from {
+        transform: translateY(0);
+      }
 
-  /* ── Layout ── */
-  .page {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 720px;
-    padding: 60px 24px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 48px;
-    flex: 1;
-  }
+      to {
+        transform: translateY(56px);
+      }
+    }
 
-  /* ── Logo ── */
-  .logo-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    animation: fadeUp 0.8s ease both;
-  }
-  .logo-img {
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 24px rgba(232,98,42,0.5)) drop-shadow(0 0 48px rgba(0,229,255,0.25));
-    animation: logoFloat 4s ease-in-out infinite alternate;
-  }
-  @keyframes logoFloat {
-    from { transform: translateY(0px); filter: drop-shadow(0 0 24px rgba(232,98,42,0.5)) drop-shadow(0 0 48px rgba(0,229,255,0.25)); }
-    to   { transform: translateY(-8px); filter: drop-shadow(0 0 36px rgba(232,98,42,0.7)) drop-shadow(0 0 64px rgba(0,229,255,0.35)); }
-  }
+    /* Ambient glows */
+    .glow-orange {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      top: -150px;
+      left: -150px;
+      background: radial-gradient(circle, rgba(232, 98, 42, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulse1 6s ease-in-out infinite alternate;
+    }
 
-  /* ── Hero text ── */
-  .hero {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    animation: fadeUp 0.8s 0.15s ease both;
-  }
-  .badge-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid var(--border-cyan);
-    background: rgba(0,229,255,0.06);
-    padding: 6px 16px;
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--cyan);
-  }
-  .badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--cyan);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--cyan);
-    animation: blink 2s ease-in-out infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .glow-cyan {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      bottom: -100px;
+      right: -100px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.14) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulse2 8s ease-in-out infinite alternate;
+    }
 
-  .waitlist-banner {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    border: 2px solid var(--orange);
-    background: rgba(232,98,42,0.12);
-    padding: 10px 24px;
-    border-radius: 100px;
-    font-family: 'Orbitron', monospace;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--orange-bright);
-    box-shadow: 0 0 24px rgba(232,98,42,0.25), inset 0 0 24px rgba(232,98,42,0.05);
-    animation: bannerPulse 3s ease-in-out infinite;
-  }
-  .waitlist-banner::before {
-    content: '';
-    width: 8px; height: 8px;
-    background: var(--orange-bright);
-    border-radius: 50%;
-    box-shadow: 0 0 12px var(--orange-bright);
-    animation: blink 1.5s ease-in-out infinite;
-  }
-  @keyframes bannerPulse {
-    0%,100% { box-shadow: 0 0 24px rgba(232,98,42,0.25), inset 0 0 24px rgba(232,98,42,0.05); }
-    50% { box-shadow: 0 0 40px rgba(232,98,42,0.45), inset 0 0 24px rgba(232,98,42,0.08); }
-  }
+    @keyframes pulse1 {
+      from {
+        opacity: 0.7;
+      }
 
-  h1 {
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    font-size: clamp(32px, 6vw, 56px);
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-  }
-  h1 .line-orange { color: var(--orange-bright); }
-  h1 .line-white  { color: var(--text); }
+      to {
+        opacity: 1;
+      }
+    }
 
-  .subtitle {
-    font-size: clamp(15px, 2.5vw, 18px);
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 520px;
-    line-height: 1.7;
-  }
-  .subtitle strong { color: var(--text); font-weight: 600; }
+    @keyframes pulse2 {
+      from {
+        opacity: 0.5;
+      }
 
-  /* ── Waitlist counter ── */
-  .counter-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 28px;
-    border: 1px solid var(--border-orange);
-    background: rgba(232,98,42,0.07);
-    border-radius: 12px;
-    animation: fadeUp 0.8s 0.25s ease both;
-  }
-  .counter-number {
-    font-family: 'Orbitron', monospace;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--orange-bright);
-    text-shadow: 0 0 20px rgba(232,98,42,0.6);
-    min-width: 60px;
-    text-align: center;
-    transition: all 0.4s ease;
-  }
-  .counter-label {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-  .counter-label strong { color: var(--text); display: block; }
+      to {
+        opacity: 0.9;
+      }
+    }
 
-  /* ── Feature pills ── */
-  .features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
-  .pill {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border: 1px solid var(--border-cyan);
-    background: rgba(0,229,255,0.04);
-    border-radius: 100px;
-    font-size: 13px;
-    color: var(--muted);
-    transition: all 0.2s;
-  }
-  .pill:hover { border-color: var(--cyan); color: var(--text); background: rgba(0,229,255,0.08); }
-  .pill-icon { font-size: 15px; }
+    /* ── Layout ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 720px;
+      padding: 60px 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+      flex: 1;
+    }
 
-  /* ── Form ── */
-  .form-wrap {
-    width: 100%;
-    animation: fadeUp 0.8s 0.4s ease both;
-  }
-  .form-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border-cyan);
-    border-radius: 20px;
-    padding: 36px;
-    position: relative;
-    overflow: hidden;
-  }
-  .form-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-    opacity: 0.6;
-  }
-  .waitlist-banner {
-    background: rgba(0,229,255,0.07);
-    border: 1px solid var(--border-cyan);
-    border-radius: 10px;
-    padding: 12px 18px;
-    font-size: 13px;
-    color: var(--cyan);
-    text-align: center;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
+    /* ── Logo ── */
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      animation: fadeUp 0.8s ease both;
+    }
 
-  .form-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 24px;
-    text-align: center;
-  }
-  .fields {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-  .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  @media (max-width: 500px) { .field-row { grid-template-columns: 1fr; } }
+    .logo-img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 24px rgba(232, 98, 42, 0.5)) drop-shadow(0 0 48px rgba(0, 229, 255, 0.25));
+      animation: logoFloat 4s ease-in-out infinite alternate;
+    }
 
-  input[type="text"],
-  input[type="email"] {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  input::placeholder { color: rgba(240,237,232,0.3); }
-  input:focus {
-    border-color: var(--cyan-dim);
-    box-shadow: 0 0 0 3px rgba(0,229,255,0.08);
-  }
+    @keyframes logoFloat {
+      from {
+        transform: translateY(0px);
+        filter: drop-shadow(0 0 24px rgba(232, 98, 42, 0.5)) drop-shadow(0 0 48px rgba(0, 229, 255, 0.25));
+      }
 
-  .submit-btn {
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
-    border: none;
-    border-radius: 12px;
-    font-family: 'Orbitron', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 24px rgba(232,98,42,0.35);
-  }
-  .submit-btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-  }
-  .submit-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 32px rgba(232,98,42,0.5);
-  }
-  .submit-btn:active { transform: translateY(0); }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+      to {
+        transform: translateY(-8px);
+        filter: drop-shadow(0 0 36px rgba(232, 98, 42, 0.7)) drop-shadow(0 0 64px rgba(0, 229, 255, 0.35));
+      }
+    }
 
-  .form-note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 14px;
-  }
-  .form-note a { color: var(--cyan-dim); text-decoration: none; }
+    /* ── Hero text ── */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
 
-  /* ── Success state ── */
-  .success-card {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    text-align: center;
-    padding: 20px 0;
-  }
-  .success-icon {
-    font-size: 48px;
-    animation: successPop 0.5s cubic-bezier(0.175,0.885,0.32,1.275) both;
-  }
-  @keyframes successPop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
-  .success-number {
-    font-family: 'Orbitron', monospace;
-    font-size: 42px;
-    font-weight: 900;
-    color: var(--orange-bright);
-    text-shadow: 0 0 30px rgba(232,98,42,0.6);
-  }
-  .success-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--cyan);
-    letter-spacing: 1px;
-  }
-  .success-msg {
-    font-size: 14px;
-    color: var(--muted);
-    max-width: 380px;
-    line-height: 1.7;
-  }
+    .badge-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
 
-  /* ── Error ── */
-  .error-msg {
-    display: none;
-    color: #FF6B6B;
-    font-size: 13px;
-    text-align: center;
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid rgba(255,107,107,0.3);
-    border-radius: 8px;
-    background: rgba(255,107,107,0.06);
-  }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-cyan);
+      background: rgba(0, 229, 255, 0.06);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
 
-  /* ── Divider ── */
-  .divider {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    animation: fadeUp 0.8s 0.5s ease both;
-  }
-  .divider-line { flex: 1; height: 1px; background: var(--border-cyan); }
-  .divider-text { font-size: 12px; color: var(--muted); letter-spacing: 1px; white-space: nowrap; }
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan);
+      animation: blink 2s ease-in-out infinite;
+    }
 
-  /* ── What you get ── */
-  .benefits {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    animation: fadeUp 0.8s 0.55s ease both;
-  }
-  @media (max-width: 500px) { .benefits { grid-template-columns: 1fr; } }
+    @keyframes blink {
 
-  .benefit-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border-cyan);
-    border-radius: 14px;
-    padding: 20px;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .benefit-card:hover {
-    border-color: rgba(0,229,255,0.35);
-    background: rgba(0,229,255,0.04);
-  }
-  .benefit-icon { font-size: 22px; margin-bottom: 10px; }
-  .benefit-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .benefit-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+      0%,
+      100% {
+        opacity: 1
+      }
 
-  /* ── Footer ── */
-  footer {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    text-align: center;
-    padding: 40px 24px 32px;
-    margin-top: 48px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-  .powered {
-    font-size: 11px;
-    color: rgba(240,237,232,0.25);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-  .powered a {
-    color: rgba(0,229,255,0.5);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-  .powered a:hover { color: var(--cyan); }
+      50% {
+        opacity: 0.3
+      }
+    }
 
-  /* ── Animations ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+    .waitlist-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--orange);
+      background: rgba(232, 98, 42, 0.12);
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-family: 'Orbitron', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange-bright);
+      box-shadow: 0 0 24px rgba(232, 98, 42, 0.25), inset 0 0 24px rgba(232, 98, 42, 0.05);
+      animation: bannerPulse 3s ease-in-out infinite;
+    }
 
-  /* Cyan diagonal accent line */
-  .accent-line {
-    position: fixed;
-    width: 2px;
-    height: 400px;
-    background: linear-gradient(180deg, transparent, var(--cyan), transparent);
-    opacity: 0.15;
-    top: 50%;
-    right: 60px;
-    transform: rotate(20deg) translateY(-50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-</style>
+    .waitlist-banner::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--orange-bright);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--orange-bright);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bannerPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 24px rgba(232, 98, 42, 0.25), inset 0 0 24px rgba(232, 98, 42, 0.05);
+      }
+
+      50% {
+        box-shadow: 0 0 40px rgba(232, 98, 42, 0.45), inset 0 0 24px rgba(232, 98, 42, 0.08);
+      }
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900;
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    h1 .line-orange {
+      color: var(--orange-bright);
+    }
+
+    h1 .line-white {
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: clamp(15px, 2.5vw, 18px);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .subtitle strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Waitlist counter ── */
+    .counter-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border: 1px solid var(--border-orange);
+      background: rgba(232, 98, 42, 0.07);
+      border-radius: 12px;
+      animation: fadeUp 0.8s 0.25s ease both;
+    }
+
+    .counter-number {
+      font-family: 'Orbitron', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--orange-bright);
+      text-shadow: 0 0 20px rgba(232, 98, 42, 0.6);
+      min-width: 60px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .counter-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .counter-label strong {
+      color: var(--text);
+      display: block;
+    }
+
+    /* ── Feature pills ── */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid var(--border-cyan);
+      background: rgba(0, 229, 255, 0.04);
+      border-radius: 100px;
+      font-size: 13px;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .pill:hover {
+      border-color: var(--cyan);
+      color: var(--text);
+      background: rgba(0, 229, 255, 0.08);
+    }
+
+    .pill-icon {
+      font-size: 15px;
+    }
+
+    /* ── Form ── */
+    .form-wrap {
+      width: 100%;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-cyan);
+      border-radius: 20px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.6;
+    }
+
+    .waitlist-banner {
+      background: rgba(0, 229, 255, 0.07);
+      border: 1px solid var(--border-cyan);
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 13px;
+      color: var(--cyan);
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .form-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .fields {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input::placeholder {
+      color: rgba(240, 237, 232, 0.3);
+    }
+
+    input:focus {
+      border-color: var(--cyan-dim);
+      box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
+      border: none;
+      border-radius: 12px;
+      font-family: 'Orbitron', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #fff;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(232, 98, 42, 0.35);
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px rgba(232, 98, 42, 0.5);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    .form-note a {
+      color: var(--cyan-dim);
+      text-decoration: none;
+    }
+
+    /* ── Success state ── */
+    .success-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .success-icon {
+      font-size: 48px;
+      animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    @keyframes successPop {
+      from {
+        transform: scale(0);
+        opacity: 0
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    .success-number {
+      font-family: 'Orbitron', monospace;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--orange-bright);
+      text-shadow: 0 0 30px rgba(232, 98, 42, 0.6);
+    }
+
+    .success-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 1px;
+    }
+
+    .success-msg {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 380px;
+      line-height: 1.7;
+    }
+
+    /* ── Error ── */
+    .error-msg {
+      display: none;
+      color: #FF6B6B;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid rgba(255, 107, 107, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 107, 107, 0.06);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: fadeUp 0.8s 0.5s ease both;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-cyan);
+    }
+
+    .divider-text {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* ── What you get ── */
+    .benefits {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      animation: fadeUp 0.8s 0.55s ease both;
+    }
+
+    @media (max-width: 500px) {
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .benefit-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-cyan);
+      border-radius: 14px;
+      padding: 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .benefit-card:hover {
+      border-color: rgba(0, 229, 255, 0.35);
+      background: rgba(0, 229, 255, 0.04);
+    }
+
+    .benefit-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .benefit-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .benefit-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      text-align: center;
+      padding: 40px 24px 32px;
+      margin-top: 48px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .powered {
+      font-size: 11px;
+      color: rgba(240, 237, 232, 0.25);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .powered a {
+      color: rgba(0, 229, 255, 0.5);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .powered a:hover {
+      color: var(--cyan);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Cyan diagonal accent line */
+    .accent-line {
+      position: fixed;
+      width: 2px;
+      height: 400px;
+      background: linear-gradient(180deg, transparent, var(--cyan), transparent);
+      opacity: 0.15;
+      top: 50%;
+      right: 60px;
+      transform: rotate(20deg) translateY(-50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="glow-orange"></div>
-<div class="glow-cyan"></div>
-<div class="accent-line"></div>
+  <div class="glow-orange"></div>
+  <div class="glow-cyan"></div>
+  <div class="accent-line"></div>
 
-<main class="page">
+  <main class="page">
 
-  <!-- Logo -->
-  <div class="logo-wrap">
-    <svg width="140" height="140" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="orangeGrad" cx="40%" cy="40%">
-          <stop offset="0%" stop-color="#FF7A3D"/>
-          <stop offset="100%" stop-color="#E8622A"/>
-        </radialGradient>
-        <filter id="glow-orange">
-          <feGaussianBlur stdDeviation="8" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <filter id="glow-cyan">
-          <feGaussianBlur stdDeviation="6" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-      <!-- Cyan diagonal line -->
-      <line x1="270" y1="20" x2="380" y2="120" stroke="#00E5FF" stroke-width="6" stroke-linecap="round" filter="url(#glow-cyan)" opacity="0.9"/>
-      <line x1="20" y1="290" x2="90" y2="360" stroke="#00E5FF" stroke-width="4" stroke-linecap="round" filter="url(#glow-cyan)" opacity="0.6"/>
-      <line x1="40" y1="310" x2="100" y2="370" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" filter="url(#glow-cyan)" opacity="0.3"/>
-      <!-- Orange arc -->
-      <path d="M 200 60 A 140 140 0 0 1 320 280" fill="none" stroke="url(#orangeGrad)" stroke-width="8" stroke-linecap="round" filter="url(#glow-orange)" opacity="0.9"/>
-      <!-- Cyan arc -->
-      <path d="M 200 340 A 140 140 0 0 1 80 120" fill="none" stroke="#00E5FF" stroke-width="5" stroke-linecap="round" filter="url(#glow-cyan)" opacity="0.7"/>
-      <!-- Arc tick marks -->
-      <rect x="192" y="58" width="16" height="6" rx="2" fill="#FF7A3D" opacity="0.8"/>
-      <rect x="315" y="276" width="16" height="6" rx="2" fill="#FF7A3D" opacity="0.6"/>
-      <!-- Spokes (asterisk) -->
-      <g transform="translate(200,200)" fill="url(#orangeGrad)" filter="url(#glow-orange)">
-        <rect x="-7" y="-75" width="14" height="75" rx="5"/>
-        <rect x="-7" y="0" width="14" height="75" rx="5"/>
-        <rect x="-75" y="-7" width="75" height="14" rx="5"/>
-        <rect x="0" y="-7" width="75" height="14" rx="5"/>
-        <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(45)"/>
-        <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(45)"/>
-        <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(-45)"/>
-        <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(-45)"/>
-        <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(22.5)"/>
-        <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(22.5)"/>
-        <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(-22.5)"/>
-        <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(-22.5)"/>
-      </g>
-    </svg>
-  </div>
-
-  <!-- Hero -->
-  <div class="hero">
-    <div class="badge-wrap">
-      <div class="waitlist-banner">⚡ Waitlist Now Open</div>
-      <div class="badge">Community Launching Soon</div>
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <svg width="140" height="140" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="orangeGrad" cx="40%" cy="40%">
+            <stop offset="0%" stop-color="#FF7A3D" />
+            <stop offset="100%" stop-color="#E8622A" />
+          </radialGradient>
+          <filter id="glow-orange">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="glow-cyan">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Cyan diagonal line -->
+        <line x1="270" y1="20" x2="380" y2="120" stroke="#00E5FF" stroke-width="6" stroke-linecap="round"
+          filter="url(#glow-cyan)" opacity="0.9" />
+        <line x1="20" y1="290" x2="90" y2="360" stroke="#00E5FF" stroke-width="4" stroke-linecap="round"
+          filter="url(#glow-cyan)" opacity="0.6" />
+        <line x1="40" y1="310" x2="100" y2="370" stroke="#00E5FF" stroke-width="2" stroke-linecap="round"
+          filter="url(#glow-cyan)" opacity="0.3" />
+        <!-- Orange arc -->
+        <path d="M 200 60 A 140 140 0 0 1 320 280" fill="none" stroke="url(#orangeGrad)" stroke-width="8"
+          stroke-linecap="round" filter="url(#glow-orange)" opacity="0.9" />
+        <!-- Cyan arc -->
+        <path d="M 200 340 A 140 140 0 0 1 80 120" fill="none" stroke="#00E5FF" stroke-width="5" stroke-linecap="round"
+          filter="url(#glow-cyan)" opacity="0.7" />
+        <!-- Arc tick marks -->
+        <rect x="192" y="58" width="16" height="6" rx="2" fill="#FF7A3D" opacity="0.8" />
+        <rect x="315" y="276" width="16" height="6" rx="2" fill="#FF7A3D" opacity="0.6" />
+        <!-- Spokes (asterisk) -->
+        <g transform="translate(200,200)" fill="url(#orangeGrad)" filter="url(#glow-orange)">
+          <rect x="-7" y="-75" width="14" height="75" rx="5" />
+          <rect x="-7" y="0" width="14" height="75" rx="5" />
+          <rect x="-75" y="-7" width="75" height="14" rx="5" />
+          <rect x="0" y="-7" width="75" height="14" rx="5" />
+          <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(45)" />
+          <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(45)" />
+          <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(-45)" />
+          <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(-45)" />
+          <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(22.5)" />
+          <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(22.5)" />
+          <rect x="-7" y="-75" width="14" height="75" rx="5" transform="rotate(-22.5)" />
+          <rect x="-7" y="0" width="14" height="75" rx="5" transform="rotate(-22.5)" />
+        </g>
+      </svg>
     </div>
-    <h1>
-      <span class="line-orange">CLAUDE</span><br>
-      <span class="line-white">COFOUNDER</span>
-    </h1>
-    <p class="subtitle">
-      Your <strong>AI-powered business edge</strong> — the latest Claude updates, real-world use cases for sales, marketing & finance, plus a <strong>live monthly webinar</strong> with industry guests. Claude as your cofounder, in your pocket.
-    </p>
-  </div>
 
-  <!-- Counter -->
-  <div class="counter-wrap">
-    <div class="counter-number" id="counter">—</div>
-    <div class="counter-label">
-      <strong>founders already on the waitlist</strong>
-      Community not live yet — secure your spot now
-    </div>
-  </div>
-
-  <!-- Features -->
-  <div class="features">
-    <div class="pill"><span class="pill-icon">⚡</span> Latest Claude Updates</div>
-    <div class="pill"><span class="pill-icon">💼</span> Business Use Cases</div>
-    <div class="pill"><span class="pill-icon">📡</span> Monthly Live Webinar</div>
-    <div class="pill"><span class="pill-icon">🤝</span> Founder Community</div>
-    <div class="pill"><span class="pill-icon">🎯</span> Sales & Marketing AI</div>
-  </div>
-
-  <!-- Form -->
-  <div class="form-wrap">
-    <div class="form-card">
-      <div class="waitlist-banner">
-        🚀 The community isn't live yet — join the waitlist and we'll email you the moment doors open.
+    <!-- Hero -->
+    <div class="hero">
+      <div class="badge-wrap">
+        <div class="waitlist-banner">⚡ Waitlist Now Open</div>
+        <div class="badge">Community Launching Soon</div>
       </div>
-      <div class="form-title">— Claim Your Spot on the Waitlist —</div>
+      <h1>
+        <span class="line-orange">CLAUDE</span><br>
+        <span class="line-white">COFOUNDER</span>
+      </h1>
+      <p class="subtitle">
+        Your <strong>AI-powered business edge</strong> — the latest Claude updates, real-world use cases for sales,
+        marketing & finance, plus a <strong>live monthly webinar</strong> with industry guests. Claude as your
+        cofounder, in your pocket.
+      </p>
+    </div>
 
-      <div id="form-inner">
-        <div class="fields">
-          <input type="text" id="fname" placeholder="Your first name" required>
-          <input type="email" id="email" placeholder="Your email address" required>
+    <!-- Counter -->
+    <div class="counter-wrap">
+      <div class="counter-number" id="counter">—</div>
+      <div class="counter-label">
+        <strong>founders already on the waitlist</strong>
+        Community not live yet — secure your spot now
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="pill"><span class="pill-icon">⚡</span> Latest Claude Updates</div>
+      <div class="pill"><span class="pill-icon">💼</span> Business Use Cases</div>
+      <div class="pill"><span class="pill-icon">📡</span> Monthly Live Webinar</div>
+      <div class="pill"><span class="pill-icon">🤝</span> Founder Community</div>
+      <div class="pill"><span class="pill-icon">🎯</span> Sales & Marketing AI</div>
+    </div>
+
+    <!-- Form -->
+    <div class="form-wrap">
+      <div class="form-card">
+        <div class="waitlist-banner">
+          🚀 The community isn't live yet — join the waitlist and we'll email you the moment doors open.
         </div>
-        <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">
-          JOIN THE WAITLIST — GET EARLY ACCESS →
-        </button>
-        <div class="error-msg" id="error-msg"></div>
-        <p class="form-note">🔒 No spam. One email when we launch — that's it. <a href="#">Privacy Policy</a></p>
+        <div class="form-title">— Claim Your Spot on the Waitlist —</div>
+
+        <div id="form-inner">
+          <div class="fields">
+            <input type="text" id="fname" placeholder="Your first name" required>
+            <input type="email" id="email" placeholder="Your email address" required>
+          </div>
+          <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">
+            JOIN THE WAITLIST — GET EARLY ACCESS →
+          </button>
+          <div class="error-msg" id="error-msg"></div>
+          <p class="form-note">🔒 No spam. One email when we launch — that's it. <a href="#">Privacy Policy</a></p>
+        </div>
+
+        <div class="success-card" id="success-card">
+          <div class="success-icon">🚀</div>
+          <div class="success-number" id="success-number">#—</div>
+          <div class="success-title">YOU'RE ON THE LIST</div>
+          <p class="success-msg">Welcome to Claude Cofounder. You'll be among the first to get access when we launch.
+            Check your inbox for a confirmation — we'll see you inside.</p>
+        </div>
       </div>
+    </div>
 
-      <div class="success-card" id="success-card">
-        <div class="success-icon">🚀</div>
-        <div class="success-number" id="success-number">#—</div>
-        <div class="success-title">YOU'RE ON THE LIST</div>
-        <p class="success-msg">Welcome to Claude Cofounder. You'll be among the first to get access when we launch. Check your inbox for a confirmation — we'll see you inside.</p>
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-text">WHAT YOU'RE GETTING ACCESS TO</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="benefits">
+      <div class="benefit-card">
+        <div class="benefit-icon">🧠</div>
+        <div class="benefit-title">Claude Updates, Decoded</div>
+        <div class="benefit-desc">Every major Claude release explained in plain business English — what changed and how
+          to use it.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📈</div>
+        <div class="benefit-title">Industry Use Cases</div>
+        <div class="benefit-desc">Exact AI workflows for sales teams, marketers, accountants and operations — ready to
+          deploy.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎙️</div>
+        <div class="benefit-title">Monthly Live Webinar</div>
+        <div class="benefit-desc">Real guests, live Q&A, and actionable takeaways once a month. No fluff, just what
+          works.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⚙️</div>
+        <div class="benefit-title">Founder-First Community</div>
+        <div class="benefit-desc">A private space to share wins, ask questions, and grow alongside other AI-forward
+          business owners.</div>
       </div>
     </div>
-  </div>
 
-  <!-- Divider -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <div class="divider-text">WHAT YOU'RE GETTING ACCESS TO</div>
-    <div class="divider-line"></div>
-  </div>
+  </main>
 
-  <!-- Benefits -->
-  <div class="benefits">
-    <div class="benefit-card">
-      <div class="benefit-icon">🧠</div>
-      <div class="benefit-title">Claude Updates, Decoded</div>
-      <div class="benefit-desc">Every major Claude release explained in plain business English — what changed and how to use it.</div>
-    </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">📈</div>
-      <div class="benefit-title">Industry Use Cases</div>
-      <div class="benefit-desc">Exact AI workflows for sales teams, marketers, accountants and operations — ready to deploy.</div>
-    </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">🎙️</div>
-      <div class="benefit-title">Monthly Live Webinar</div>
-      <div class="benefit-desc">Real guests, live Q&A, and actionable takeaways once a month. No fluff, just what works.</div>
-    </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">⚙️</div>
-      <div class="benefit-title">Founder-First Community</div>
-      <div class="benefit-desc">A private space to share wins, ask questions, and grow alongside other AI-forward business owners.</div>
-    </div>
-  </div>
+  <footer>
+    <p class="powered">Powered by <a href="https://getaipowers.com/" target="_blank">getAIPowers</a></p>
+  </footer>
 
-</main>
+  <script>
+    // ──────────────────────────────────────────────────────
+    //  Claude Cofounder — Waitlist
+    //  This file is safe to commit to a public repo.
+    //  All secrets live in Vercel Environment Variables.
+    //  The serverless function lives at /api/subscribe
+    //  and /api/count (see the /api folder).
+    // ──────────────────────────────────────────────────────
 
-<footer>
-  <p class="powered">Powered by <a href="https://getaipowers.com/" target="_blank">getAIPowers</a></p>
-</footer>
+    let currentCount = 0;
 
-<script>
-  // ──────────────────────────────────────────────────────
-  //  Claude Cofounder — Waitlist
-  //  This file is safe to commit to a public repo.
-  //  All secrets live in Vercel Environment Variables.
-  //  The serverless function lives at /api/subscribe
-  //  and /api/count (see the /api folder).
-  // ──────────────────────────────────────────────────────
-
-  let currentCount = 0;
-
-  // Fetch subscriber count from our secure Vercel function
-  async function fetchCount() {
-    try {
-      const res = await fetch('https://beehiiv-api.george-cairns-3ac.workers.dev/count');
-      if (!res.ok) throw new Error();
-      const data = await res.json();
-      currentCount = data.count ?? 0;
-    } catch(e) {
-      currentCount = 0;
+    // Fetch subscriber count from our secure Vercel function
+    async function fetchCount() {
+      try {
+        const res = await fetch('/api/count'); //fetch('https://beehiiv-api.george-cairns-3ac.workers.dev/count')
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        currentCount = data.count ?? 0;
+      } catch (e) {
+        currentCount = 0;
+      }
+      animateCounter(currentCount);
     }
-    animateCounter(currentCount);
-  }
 
-  function animateCounter(target) {
-    const el = document.getElementById('counter');
-    if (target === 0) { el.textContent = '0'; return; }
-    let current = Math.max(0, target - 20);
-    const step = Math.ceil((target - current) / 30);
-    const timer = setInterval(() => {
-      current = Math.min(current + step, target);
-      el.textContent = current;
-      if (current >= target) clearInterval(timer);
-    }, 40);
-  }
-
-  async function handleSubmit() {
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const errorEl = document.getElementById('error-msg');
-    const btn = document.getElementById('submit-btn');
-
-    errorEl.style.display = 'none';
-
-    if (!fname) { showError('Please enter your first name.'); return; }
-    if (!email || !email.includes('@')) { showError('Please enter a valid email address.'); return; }
-
-    btn.disabled = true;
-    btn.textContent = 'SECURING YOUR SPOT...';
-
-    try {
-      const res = await fetch('https://beehiiv-api.george-cairns-3ac.workers.dev', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, first_name: fname })
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'API error');
-
-      // Show success
-      currentCount += 1;
-      document.getElementById('form-inner').style.display = 'none';
-      const successCard = document.getElementById('success-card');
-      successCard.style.display = 'flex';
-      document.getElementById('success-number').textContent = `#${currentCount}`;
-      document.getElementById('counter').textContent = currentCount;
-
-    } catch(e) {
-      btn.disabled = false;
-      btn.textContent = 'JOIN THE WAITLIST →';
-      showError(e.message && e.message !== 'API error'
-        ? e.message
-        : 'Something went wrong. Please try again.');
+    function animateCounter(target) {
+      const el = document.getElementById('counter');
+      if (target === 0) { el.textContent = '0'; return; }
+      let current = Math.max(0, target - 20);
+      const step = Math.ceil((target - current) / 30);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current;
+        if (current >= target) clearInterval(timer);
+      }, 40);
     }
-  }
 
-  function showError(msg) {
-    const el = document.getElementById('error-msg');
-    el.textContent = msg;
-    el.style.display = 'block';
-  }
+    async function handleSubmit() {
+      const fname = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const errorEl = document.getElementById('error-msg');
+      const btn = document.getElementById('submit-btn');
 
-  // Allow Enter key to submit
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleSubmit();
-  });
+      errorEl.style.display = 'none';
 
-  fetchCount();
-</script>
+      if (!fname) { showError('Please enter your first name.'); return; }
+      if (!email || !email.includes('@')) { showError('Please enter a valid email address.'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'SECURING YOUR SPOT...';
+
+      try {
+        const res = await fetch('/api/subscribe', { //fetch('https://beehiiv-api.george-cairns-3ac.workers.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, first_name: fname })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'API error');
+
+        // Show success
+        currentCount += 1;
+        document.getElementById('form-inner').style.display = 'none';
+        const successCard = document.getElementById('success-card');
+        successCard.style.display = 'flex';
+        document.getElementById('success-number').textContent = `#${currentCount}`;
+        document.getElementById('counter').textContent = currentCount;
+
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = 'JOIN THE WAITLIST →';
+        showError(e.message && e.message !== 'API error'
+          ? e.message
+          : 'Something went wrong. Please try again.');
+      }
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('error-msg');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    // Allow Enter key to submit
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleSubmit();
+    });
+
+    fetchCount();
+  </script>
 </body>
+
 </html>

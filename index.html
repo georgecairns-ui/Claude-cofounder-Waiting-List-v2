@@ -45,7 +45,6 @@
       align-items: center;
     }
 
-    /* Grid background */
     body::before {
       content: '';
       position: fixed;
@@ -69,7 +68,6 @@
       }
     }
 
-    /* Ambient glows */
     .glow-orange {
       position: fixed;
       width: 600px;
@@ -114,7 +112,6 @@
       }
     }
 
-    /* ── Layout ── */
     .page {
       position: relative;
       z-index: 1;
@@ -128,7 +125,6 @@
       flex: 1;
     }
 
-    /* ── Logo ── */
     .logo-wrap {
       display: flex;
       flex-direction: column;
@@ -137,27 +133,6 @@
       animation: fadeUp 0.8s ease both;
     }
 
-    .logo-img {
-      width: 160px;
-      height: 160px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 24px rgba(232, 98, 42, 0.5)) drop-shadow(0 0 48px rgba(0, 229, 255, 0.25));
-      animation: logoFloat 4s ease-in-out infinite alternate;
-    }
-
-    @keyframes logoFloat {
-      from {
-        transform: translateY(0px);
-        filter: drop-shadow(0 0 24px rgba(232, 98, 42, 0.5)) drop-shadow(0 0 48px rgba(0, 229, 255, 0.25));
-      }
-
-      to {
-        transform: translateY(-8px);
-        filter: drop-shadow(0 0 36px rgba(232, 98, 42, 0.7)) drop-shadow(0 0 64px rgba(0, 229, 255, 0.35));
-      }
-    }
-
-    /* ── Hero text ── */
     .hero {
       text-align: center;
       display: flex;
@@ -280,7 +255,6 @@
       font-weight: 600;
     }
 
-    /* ── Waitlist counter ── */
     .counter-wrap {
       display: flex;
       align-items: center;
@@ -314,7 +288,6 @@
       display: block;
     }
 
-    /* ── Feature pills ── */
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -346,7 +319,6 @@
       font-size: 15px;
     }
 
-    /* ── Form ── */
     .form-wrap {
       width: 100%;
       animation: fadeUp 0.8s 0.4s ease both;
@@ -372,7 +344,7 @@
       opacity: 0.6;
     }
 
-    .waitlist-banner {
+    .form-inner-banner {
       background: rgba(0, 229, 255, 0.07);
       border: 1px solid var(--border-cyan);
       border-radius: 10px;
@@ -400,18 +372,6 @@
       flex-direction: column;
       gap: 14px;
       margin-bottom: 18px;
-    }
-
-    .field-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    @media (max-width: 500px) {
-      .field-row {
-        grid-template-columns: 1fr;
-      }
     }
 
     input[type="text"],
@@ -489,7 +449,6 @@
       text-decoration: none;
     }
 
-    /* ── Success state ── */
     .success-card {
       display: none;
       flex-direction: column;
@@ -539,7 +498,6 @@
       line-height: 1.7;
     }
 
-    /* ── Error ── */
     .error-msg {
       display: none;
       color: #FF6B6B;
@@ -552,7 +510,6 @@
       background: rgba(255, 107, 107, 0.06);
     }
 
-    /* ── Divider ── */
     .divider {
       width: 100%;
       display: flex;
@@ -574,7 +531,6 @@
       white-space: nowrap;
     }
 
-    /* ── What you get ── */
     .benefits {
       width: 100%;
       display: grid;
@@ -620,7 +576,6 @@
       line-height: 1.5;
     }
 
-    /* ── Footer ── */
     footer {
       position: relative;
       z-index: 1;
@@ -649,7 +604,6 @@
       color: var(--cyan);
     }
 
-    /* ── Animations ── */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -662,7 +616,6 @@
       }
     }
 
-    /* Cyan diagonal accent line */
     .accent-line {
       position: fixed;
       width: 2px;
@@ -679,14 +632,12 @@
 </head>
 
 <body>
-
   <div class="glow-orange"></div>
   <div class="glow-cyan"></div>
   <div class="accent-line"></div>
 
   <main class="page">
 
-    <!-- Logo -->
     <div class="logo-wrap">
       <svg width="140" height="140" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -709,23 +660,18 @@
             </feMerge>
           </filter>
         </defs>
-        <!-- Cyan diagonal line -->
         <line x1="270" y1="20" x2="380" y2="120" stroke="#00E5FF" stroke-width="6" stroke-linecap="round"
           filter="url(#glow-cyan)" opacity="0.9" />
         <line x1="20" y1="290" x2="90" y2="360" stroke="#00E5FF" stroke-width="4" stroke-linecap="round"
           filter="url(#glow-cyan)" opacity="0.6" />
         <line x1="40" y1="310" x2="100" y2="370" stroke="#00E5FF" stroke-width="2" stroke-linecap="round"
           filter="url(#glow-cyan)" opacity="0.3" />
-        <!-- Orange arc -->
         <path d="M 200 60 A 140 140 0 0 1 320 280" fill="none" stroke="url(#orangeGrad)" stroke-width="8"
           stroke-linecap="round" filter="url(#glow-orange)" opacity="0.9" />
-        <!-- Cyan arc -->
         <path d="M 200 340 A 140 140 0 0 1 80 120" fill="none" stroke="#00E5FF" stroke-width="5" stroke-linecap="round"
           filter="url(#glow-cyan)" opacity="0.7" />
-        <!-- Arc tick marks -->
         <rect x="192" y="58" width="16" height="6" rx="2" fill="#FF7A3D" opacity="0.8" />
         <rect x="315" y="276" width="16" height="6" rx="2" fill="#FF7A3D" opacity="0.6" />
-        <!-- Spokes (asterisk) -->
         <g transform="translate(200,200)" fill="url(#orangeGrad)" filter="url(#glow-orange)">
           <rect x="-7" y="-75" width="14" height="75" rx="5" />
           <rect x="-7" y="0" width="14" height="75" rx="5" />
@@ -743,7 +689,6 @@
       </svg>
     </div>
 
-    <!-- Hero -->
     <div class="hero">
       <div class="badge-wrap">
         <div class="waitlist-banner">⚡ Waitlist Now Open</div>
@@ -760,7 +705,6 @@
       </p>
     </div>
 
-    <!-- Counter -->
     <div class="counter-wrap">
       <div class="counter-number" id="counter">—</div>
       <div class="counter-label">
@@ -769,7 +713,6 @@
       </div>
     </div>
 
-    <!-- Features -->
     <div class="features">
       <div class="pill"><span class="pill-icon">⚡</span> Latest Claude Updates</div>
       <div class="pill"><span class="pill-icon">💼</span> Business Use Cases</div>
@@ -778,10 +721,9 @@
       <div class="pill"><span class="pill-icon">🎯</span> Sales & Marketing AI</div>
     </div>
 
-    <!-- Form -->
     <div class="form-wrap">
       <div class="form-card">
-        <div class="waitlist-banner">
+        <div class="form-inner-banner">
           🚀 The community isn't live yet — join the waitlist and we'll email you the moment doors open.
         </div>
         <div class="form-title">— Claim Your Spot on the Waitlist —</div>
@@ -808,14 +750,12 @@
       </div>
     </div>
 
-    <!-- Divider -->
     <div class="divider">
       <div class="divider-line"></div>
       <div class="divider-text">WHAT YOU'RE GETTING ACCESS TO</div>
       <div class="divider-line"></div>
     </div>
 
-    <!-- Benefits -->
     <div class="benefits">
       <div class="benefit-card">
         <div class="benefit-icon">🧠</div>
@@ -850,20 +790,16 @@
   </footer>
 
   <script>
-    // ──────────────────────────────────────────────────────
-    //  Claude Cofounder — Waitlist
-    //  This file is safe to commit to a public repo.
-    //  All secrets live in Vercel Environment Variables.
-    //  The serverless function lives at /api/subscribe
-    //  and /api/count (see the /api folder).
-    // ──────────────────────────────────────────────────────
+    // Safe to commit publicly — no secrets here.
+    // API calls go to the Vercel deployment which holds secrets securely.
+
+    const API_BASE = 'https://claude-cofounder-waiting-list-v2.vercel.app';
 
     let currentCount = 0;
 
-    // Fetch subscriber count from our secure Vercel function
     async function fetchCount() {
       try {
-        const res = await fetch('https://www.claudecofounder.com/api/count'); // const res = await fetch('/api/count');
+        const res = await fetch(`${API_BASE}/api/count`);
         if (!res.ok) throw new Error();
         const data = await res.json();
         currentCount = data.count ?? 0;
@@ -900,7 +836,7 @@
       btn.textContent = 'SECURING YOUR SPOT...';
 
       try {
-        const res = await fetch('https://www.claudecofounder.com/api/subscribe', { //const res = await fetch('/api/subscribe', {
+        const res = await fetch(`${API_BASE}/api/subscribe`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, first_name: fname })
@@ -909,7 +845,6 @@
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'API error');
 
-        // Show success
         currentCount += 1;
         document.getElementById('form-inner').style.display = 'none';
         const successCard = document.getElementById('success-card');
@@ -932,7 +867,6 @@
       el.style.display = 'block';
     }
 
-    // Allow Enter key to submit
     document.addEventListener('keydown', e => {
       if (e.key === 'Enter') handleSubmit();
     });

@@ -1,10 +1,8 @@
 // /api/subscribe.js
 // Vercel Serverless Function — registers a new subscriber to Beehiiv.
-// Secrets (BEEHIIV_API_KEY, BEEHIIV_PUB_ID) live in Vercel Environment Variables.
-// This file is safe to commit publicly — no secrets here.
+// Safe to commit publicly — no secrets here.
 
 export default async function handler(req, res) {
-  // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed.' });
   }
@@ -22,7 +20,6 @@ export default async function handler(req, res) {
   const API_KEY = process.env.BEEHIIV_API_KEY;
 
   if (!PUB_ID || !API_KEY) {
-    console.error('Missing Beehiiv env vars');
     return res.status(500).json({ error: 'Server not configured.' });
   }
 
@@ -36,7 +33,7 @@ export default async function handler(req, res) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email,
+          email: email.trim().toLowerCase(),
           first_name: first_name.trim(),
           reactivate_existing: true,
           send_welcome_email: true,
@@ -50,7 +47,14 @@ export default async function handler(req, res) {
     const data = await beehiivRes.json();
 
     if (!beehiivRes.ok) {
-      console.error('Beehiiv error:', data);
+      console.error('Beehiiv error:', JSON.stringify(data));
+
+      // Catch Beehiiv validation errors and return a clear message
+      const beehiivMessage = data?.errors?.[0]?.message ?? data?.message ?? null;
+      if (beehiivMessage) {
+        return res.status(400).json({ error: `Could not subscribe: ${beehiivMessage}` });
+      }
+
       return res.status(500).json({ error: 'Subscription failed. Please try again.' });
     }
 

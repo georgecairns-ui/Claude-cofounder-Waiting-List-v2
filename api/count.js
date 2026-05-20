@@ -1,6 +1,6 @@
 // /api/count.js
-// Vercel Serverless Function — returns total active subscriber count.
-// Secrets live in Vercel Environment Variables. Safe to commit publicly.
+// Vercel Serverless Function — returns total subscriber count.
+// Safe to commit publicly — no secrets here.
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -15,8 +15,9 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Fetch up to 100 subscribers per page and use total_results from meta
     const beehiivRes = await fetch(
-      `https://api.beehiiv.com/v2/publications/${PUB_ID}/subscriptions?limit=1&status=active`,
+      `https://api.beehiiv.com/v2/publications/${PUB_ID}/subscriptions?limit=100&expand[]=stats`,
       {
         headers: {
           Authorization: `Bearer ${API_KEY}`,
@@ -26,9 +27,16 @@ export default async function handler(req, res) {
     );
 
     const data = await beehiivRes.json();
-    const count = data?.meta?.total ?? 0;
 
-    // Cache for 60 seconds so we don't hammer the Beehiiv API on every page load
+    // Try every field Beehiiv might use for the total count
+    const count =
+      data?.meta?.total_results ??
+      data?.meta?.total ??
+      data?.total_results ??
+      data?.total ??
+      data?.data?.length ??
+      0;
+
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
     return res.status(200).json({ count });
   } catch (err) {

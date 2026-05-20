@@ -2,7 +2,22 @@
 // Vercel Serverless Function — returns total subscriber count.
 // Safe to commit publicly — no secrets here.
 
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 export default async function handler(req, res) {
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, CORS_HEADERS);
+    return res.end();
+  }
+
+  // Set CORS headers on every response
+  Object.entries(CORS_HEADERS).forEach(([k, v]) => res.setHeader(k, v));
+
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed.' });
   }
@@ -26,7 +41,6 @@ export default async function handler(req, res) {
     );
 
     const data = await beehiivRes.json();
-
     const count =
       data?.meta?.total_results ??
       data?.meta?.total ??

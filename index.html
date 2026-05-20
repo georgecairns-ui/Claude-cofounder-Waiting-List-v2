@@ -654,7 +654,7 @@
   // Fetch subscriber count from our secure Vercel function
   async function fetchCount() {
     try {
-      const res = await fetch('https://beehiiv-waiitng-list.george-cairns-3ac.workers.dev/count');
+      const res = await fetch('https://beehiiv-api.george-cairns-3ac.workers.dev/count');
       if (!res.ok) throw new Error();
       const data = await res.json();
       currentCount = data.count ?? 0;
@@ -691,7 +691,7 @@
     btn.textContent = 'SECURING YOUR SPOT...';
 
     try {
-      const res = await fetch('https://beehiiv-waiitng-list.george-cairns-3ac.workers.dev', {
+      const res = await fetch('https://beehiiv-api.george-cairns-3ac.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, first_name: fname })

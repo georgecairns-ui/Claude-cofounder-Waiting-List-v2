@@ -15,9 +15,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Fetch up to 100 subscribers per page and use total_results from meta
     const beehiivRes = await fetch(
-      `https://api.beehiiv.com/v2/publications/${PUB_ID}/subscriptions?limit=100&expand[]=stats`,
+      `https://api.beehiiv.com/v2/publications/${PUB_ID}/subscriptions?limit=100`,
       {
         headers: {
           Authorization: `Bearer ${API_KEY}`,
@@ -28,7 +27,6 @@ export default async function handler(req, res) {
 
     const data = await beehiivRes.json();
 
-    // Try every field Beehiiv might use for the total count
     const count =
       data?.meta?.total_results ??
       data?.meta?.total ??
